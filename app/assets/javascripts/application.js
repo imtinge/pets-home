@@ -10,6 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
+//= require wangEditor.min
+//= require plupload.full.min
+//= require qiniu.min
 //= require turbolinks
 //= require_tree .

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  # skip_before_action :verify_authenticity_token, only: :upload
 
   # GET /posts
   # GET /posts.json
@@ -59,6 +60,21 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def uptoken
+    # 要上传的空间
+    bucket = 'pets-home'
+    # 上传到七牛后保存的文件名
+    key = nil
+    # 构建上传策略，上传策略的更多参数请参照 http://developer.qiniu.com/article/developer/security/put-policy.html
+    put_policy = Qiniu::Auth::PutPolicy.new(
+        bucket, # 存储空间
+        key,    # 指定上传的资源名，如果传入 nil，就表示不指定资源名，将使用默认的资源名
+        3600    # token 过期时间，默认为 3600 秒，即 1 小时
+    )
+    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
+    render json: {uptoken: uptoken}
   end
 
   private
