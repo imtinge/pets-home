@@ -16,4 +16,5 @@
 //= require plupload.full.min
 //= require qiniu.min
 //= require turbolinks
+//= require bootstrap/alert
 //= require_tree .
