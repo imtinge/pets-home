@@ -1,0 +1,95 @@
+= form_for @reporter, html: { class: 'ui form' } do |f|
+  = render 'common/error_message', object: @reporter
+  .ui.very.padded.segment
+    h3.header 宠物信息
+    .five.fields
+      .field
+        = f.label '宠物名字'
+        = f.text_field :pet_name
+      .field
+        = f.label '宠物种类'
+        .ui.selection.dropdown
+          = f.hidden_field :pet_species
+          = semantic_icon 'dropdown'
+          .default.text 种类
+          .menu
+            .item data-value='狗' 狗
+            .item data-value='猫' 猫
+            .item data-value='其他' 其他
+      .field
+        = f.label '宠物品种'
+        = f.text_field :pet_breed
+      .field
+        = f.label '宠物性别'
+        .ui.selection.dropdown
+          = f.hidden_field :pet_gender
+          = semantic_icon 'dropdown'
+          .default.text 宠物性别
+          .menu
+            .item data-value='公' 公
+            .item data-value='母' 母
+            .item data-value='不详' 不详
+      .field
+        = f.label '宠物毛色'
+        = f.text_field :pet_color
+    .field
+      = f.label '宠物照片'
+      = f.file_field :pet_photo
+      = f.hidden_field :pet_photo_cache
+    h3.header 走失信息
+    .two.fields
+      .field
+        = f.label '走失日期'
+        #lost-date.ui.calendar
+          .ui.input.left.icon
+            = semantic_icon 'calendar'
+            = f.text_field :lost_date
+      .field
+        = f.label '走失城市'
+        .ui.selection.dropdown
+          = f.hidden_field :lost_city
+          = semantic_icon 'dropdown'
+          .default.text 走失城市
+          .menu
+            .item data-value='碧江' 碧江
+            .item data-value='万山' 万山
+            .item data-value='江口' 江口
+            .item data-value='松桃' 松桃
+            .item data-value='玉屏' 玉屏
+            .item data-value='石阡' 石阡
+            .item data-value='思南' 思南
+            .item data-value='沿河' 沿河
+            .item data-value='印江' 印江
+            .item data-value='德江' 德江
+      .field
+        = f.label '走失地点'
+        = f.text_field :lost_place
+    .field
+      = f.label '附加信息'
+      = f.text_area :extra_info
+    h3.header 联络信息
+    .three.fields
+      .field
+        = f.label '联系人'
+        = f.text_field :contact
+      .field
+        = f.label '邮箱'
+        = f.text_field :email
+      .field
+        = f.label '手机号码'
+        = f.text_field :phone_number
+  .field
+    = f.submit 'Submit', class: 'ui teal button'
+
+coffee:
+  $('#lost-date').calendar
+    type: 'date'
+    formatter: date: (date, settings) ->
+      if !date
+        return ''
+      year = date.getFullYear()
+      month = date.getMonth() + 1
+      day = date.getDate()
+      month = if month < 10 then '0' + month else month
+      day = if day < 10 then '0' + day else day
+      year + '-' + month + '-' + day

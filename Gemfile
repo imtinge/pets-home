@@ -63,6 +63,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
 gem 'slim-rails'
-gem 'qiniu'
+gem 'carrierwave-qiniu'
+gem 'qiniu-rs'
 gem 'semantic-ui-sass'
 gem 'social-share-button'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'figaro'

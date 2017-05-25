@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525042004) do
+ActiveRecord::Schema.define(version: 20170525154935) do
+
+  create_table "reporters", force: :cascade do |t|
+    t.string "pet_name"
+    t.string "pet_photo"
+    t.string "pet_species"
+    t.string "pet_gender"
+    t.string "pet_color"
+    t.date "lost_date"
+    t.string "lost_city"
+    t.string "lost_place"
+    t.text "extra_info"
+    t.string "contact"
+    t.string "email"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pet_breed"
+    t.boolean "is_found", default: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

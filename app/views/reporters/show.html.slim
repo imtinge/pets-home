@@ -1,0 +1,62 @@
+h2.header Lost Pet
+
+.ui.grid.container
+  .ten.wide.column
+    .ui.very.padded.piled.segments
+      .ui.large.red.corner.label Lost
+      .ui.segment
+        h3.header 走失信息
+        table.ui.very.basic.table
+          tbody
+            tr
+              td 走失日期：
+              td = @reporter.lost_date
+            tr
+              td 走失城市：
+              td = @reporter.lost_city
+            tr
+              td 走失城市：
+              td = @reporter.lost_place
+      .ui.secondary.segment
+        h3.header 宠物信息
+        table.ui.very.basic.table
+          tbody
+            tr
+              td 名字：
+              td = @reporter.pet_name
+            tr
+              td 种类：
+              td = @reporter.pet_species
+              td 品种：
+              td = @reporter.pet_breed
+            tr
+              td 性别：
+              td = @reporter.pet_gender
+              td 毛色：
+              td = @reporter.pet_color
+      .ui.tertiary.segment
+        h3.header 联系人信息
+        table.ui.very.basic.table
+          tbody
+            tr
+              td 联系人：
+              td = @reporter.contact
+            tr
+              td 邮箱：
+              td = @reporter.email
+            tr
+              td 电话号码：
+              td = @reporter.phone_number
+      
+  .six.wide.column
+    .ui.piled.segment
+      = image_tag @reporter.pet_photo.medium.url, class: 'ui image'
+      = @reporter.extra_info
+    p 希望好心人积极转发我发布的启示，谢谢！
+    = social_share_button_tag("我是#{@reporter.pet_name}，我，我，我迷路了，你可以帮我找到回家的路么？", image: @reporter.pet_photo.medium.url)
+
+
+br
+= link_to 'Edit', edit_reporter_path(@reporter)
+'  |
+= link_to 'Back', reporters_path

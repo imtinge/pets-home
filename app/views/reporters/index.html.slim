@@ -1,0 +1,32 @@
+h1.header Lost pets
+= link_to 'New Reporter', new_reporter_path, class: 'ui teal right floated button'
+
+.ui.grid.container
+  .twelve.wide.column
+    .ui.divided.items
+      - @reporters.each do |reporter|
+        .item
+          .ui.small.image
+            = link_to reporter_path(reporter) do
+              = image_tag reporter.pet_photo.thumb.url
+          .middle.aligned.content
+            .ui.red.tag.right.floated.label Lost
+            .header
+              = reporter.pet_name
+            .meta
+                = reporter.pet_color
+                =<> reporter.pet_gender
+                => reporter.pet_species
+            .description
+                = simple_format(truncate reporter.extra_info, length: 300)
+            .extra
+              .ui.very.relaxed.horizontal.list
+                .item
+                  | 走失日期：
+                  = reporter.lost_date
+                .item
+                  | 走失城市：
+                  = reporter.lost_city
+                .item
+                  | 走失地点：
+                  = reporter.lost_place

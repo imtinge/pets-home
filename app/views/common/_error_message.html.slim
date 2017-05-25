@@ -1,0 +1,6 @@
+- if object.errors.any?
+  .ui.negative.message
+    h2.header = "#{pluralize(object.errors.count, "error")} prohibited this reporter from being saved:"
+    ul.list
+      - object.errors.full_messages.each do |message|
+        li = message

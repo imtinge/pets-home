@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pet_name: MyString
+  pet_photo: MyString
+  species: MyString
+  sex: MyString
+  is_neutered: MyString
+  predominat_color: MyString
+  markings: MyString
+  lost_date: 2017-05-25
+  lost_city: MyString
+  lost_place: MyString
+  other_info: MyText
+  contact: MyString
+  email: MyString
+  phone_number: MyString
+
+two:
+  pet_name: MyString
+  pet_photo: MyString
+  species: MyString
+  sex: MyString
+  is_neutered: MyString
+  predominat_color: MyString
+  markings: MyString
+  lost_date: 2017-05-25
+  lost_city: MyString
+  lost_place: MyString
+  other_info: MyText
+  contact: MyString
+  email: MyString
+  phone_number: MyString

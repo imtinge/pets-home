@@ -13,8 +13,11 @@
 //= require jquery
 //= require rails-ujs
 //= require semantic-ui
+//= require calendar.min
 //= require wangEditor.min
 //= require plupload.full.min
 //= require qiniu.min
+//= require social-share-button
+//= require social-share-button/wechat
 //= require turbolinks
 //= require_tree .
