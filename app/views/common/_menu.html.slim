@@ -1,7 +1,7 @@
 #header-menu.ui.inverted.large.top.fixed.menu
   .ui.container
     = link_to 'Pets Home Again', root_path, class: 'ui large header item', 'data-turbolinks': "false"
-    = link_to 'Lost pets', posts_path, class: 'item', 'data-turbolinks': "false"
+    = link_to 'Lost pets', '#', class: 'item', 'data-turbolinks': "false"
     .right.menu
       - unless user_signed_in?
         .item
