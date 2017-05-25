@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require semantic-ui
 //= require wangEditor.min
 //= require plupload.full.min
 //= require qiniu.min
 //= require turbolinks
-//= require bootstrap/alert
-//= require bootstrap/dropdown
 //= require_tree .

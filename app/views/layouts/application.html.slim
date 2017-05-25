@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | PetsHomeAgain
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = render "common/navbar"
+    main style='margin-top: 74px;'
+      #flash_message
+        = semantic_flash
+      .ui.container style='margin-top: 16px;'
+        = yield
+    = render "common/footer"
+    = debug params if Rails.env.development?
+    
