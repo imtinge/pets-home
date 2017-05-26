@@ -8,7 +8,7 @@
         = f.text_field :pet_name
       .field
         = f.label '宠物种类'
-        .ui.selection.dropdown
+        .ui.compact.selection.dropdown
           = f.hidden_field :pet_species
           = semantic_icon 'dropdown'
           .default.text 种类
@@ -21,7 +21,7 @@
         = f.text_field :pet_breed
       .field
         = f.label '宠物性别'
-        .ui.selection.dropdown
+        .ui.compact.selection.dropdown
           = f.hidden_field :pet_gender
           = semantic_icon 'dropdown'
           .default.text 宠物性别

@@ -8,7 +8,7 @@ h1.header Lost pets
         .item
           .ui.small.image
             = link_to reporter_path(reporter) do
-              = image_tag reporter.pet_photo.thumb.url
+              = render_image reporter.pet_photo, :thumb
           .middle.aligned.content
             .ui.red.tag.right.floated.label Lost
             .header

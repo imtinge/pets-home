@@ -51,8 +51,7 @@ h2.header Lost Pet
       
   .six.wide.column
     .ui.piled.segment
-      = image_tag @reporter.pet_photo.medium.url, class: 'ui image'
-      = @reporter.extra_info
+      = render_image @reporter.pet_photo, :medium
     p 希望好心人积极转发我发布的启示，谢谢！
     = social_share_button_tag("我是#{@reporter.pet_name}，我，我，我迷路了，你可以帮我找到回家的路么？", image: @reporter.pet_photo.medium.url)
 
