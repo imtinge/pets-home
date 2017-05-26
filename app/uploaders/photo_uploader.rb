@@ -3,6 +3,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  
+  # 覆盖了原来的图片
+  self.qiniu_can_overwrite = true
 
   # Choose what kind of storage to use for this uploader:
   unless Rails.env.production?
