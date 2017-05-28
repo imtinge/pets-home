@@ -1,7 +1,27 @@
-h1.header Lost pets
+h1.header 爱的呼唤
 = link_to 'New Reporter', new_reporter_path, class: 'ui teal right floated button'
 
 .ui.grid.container
+  .three.wide.column
+    h2.header.item 种族
+    .ui.center.aligned.animated.list
+      .item 汪星人
+      .item 喵星人
+      .item 其他星人
+    .ui.hidden.divider
+    h2.header.item 区域
+    .ui.center.aligned.animated.list
+      .item 碧江
+      .item 万山
+      .item 江口
+      .item 松桃
+      .item 玉屏
+      .item 思南
+      .item 石阡
+      .item 德江
+      .item 沿河
+      .item 印江
+        
   .twelve.wide.column
     .ui.divided.items
       - @reporters.each do |reporter|
@@ -10,17 +30,20 @@ h1.header Lost pets
             = link_to reporter_path(reporter) do
               = render_image reporter.pet_photo, :thumb
           .middle.aligned.content
-            .ui.red.tag.right.floated.label Lost
+            - unless reporter.is_found
+              .ui.red.tag.right.floated.label Lost
+            - else
+              .ui.black.tag.right.floated.label Found
             .header
               = reporter.pet_name
             .meta
-                = reporter.pet_color
-                =<> reporter.pet_gender
+                => reporter.pet_color
                 => reporter.pet_species
+                => reporter.pet_gender
             .description
-                = simple_format(truncate reporter.extra_info, length: 300)
+                = truncate reporter.extra_info, length: 300
             .extra
-              .ui.very.relaxed.horizontal.list
+              .ui.horizontal.list
                 .item
                   | 走失日期：
                   = reporter.lost_date

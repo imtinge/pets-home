@@ -10,4 +10,5 @@ class Reporter < ApplicationRecord
   validates :contact, presence: true
   validates :email, presence: true
   validates :phone_number, presence: true
+  belongs_to :user
 end

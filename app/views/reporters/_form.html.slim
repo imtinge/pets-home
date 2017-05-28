@@ -1,39 +1,41 @@
 = form_for @reporter, html: { class: 'ui form' } do |f|
   = render 'common/error_message', object: @reporter
   .ui.very.padded.segment
+    - if current_user == @report_user and !@reporter.new_record?
+      = link_to 'Ta已经回家了?', '#', class: 'ui right floated large red button', data: { confirm: 'Are you sure?' }
     h3.header 宠物信息
     .five.fields
       .field
-        = f.label '宠物名字'
+        = f.label '名字'
         = f.text_field :pet_name
       .field
-        = f.label '宠物种类'
+        = f.label '种族'
         .ui.compact.selection.dropdown
           = f.hidden_field :pet_species
           = semantic_icon 'dropdown'
-          .default.text 种类
+          .default.text 种族
           .menu
-            .item data-value='狗' 狗
-            .item data-value='猫' 猫
-            .item data-value='其他' 其他
+            .item data-value='汪星人' 汪星人
+            .item data-value='喵星人' 喵星人
+            .item data-value='其他星人' 其他星人
       .field
-        = f.label '宠物品种'
+        = f.label '血统'
         = f.text_field :pet_breed
       .field
-        = f.label '宠物性别'
+        = f.label '性别'
         .ui.compact.selection.dropdown
           = f.hidden_field :pet_gender
           = semantic_icon 'dropdown'
-          .default.text 宠物性别
+          .default.text 性别
           .menu
-            .item data-value='公' 公
-            .item data-value='母' 母
+            .item data-value='男孩子' 男孩子
+            .item data-value='女孩子' 女孩子
             .item data-value='不详' 不详
       .field
-        = f.label '宠物毛色'
+        = f.label '毛色'
         = f.text_field :pet_color
     .field
-      = f.label '宠物照片'
+      = f.label '照片'
       = f.file_field :pet_photo
       = f.hidden_field :pet_photo_cache
     h3.header 走失信息

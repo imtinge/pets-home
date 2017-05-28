@@ -3,8 +3,12 @@ h2.header Lost Pet
 .ui.grid.container
   .ten.wide.column
     .ui.very.padded.piled.segments
-      .ui.huge.red.corner.label 
-        p Lost
+      - unless @reporter.is_found
+        .ui.huge.red.corner.label 
+          p Lost
+      - else
+        .ui.huge.black.corner.label 
+          p Found
       .ui.segment
         h3.header 走失信息
         table.ui.very.basic.table
@@ -26,9 +30,9 @@ h2.header Lost Pet
               td 名字：
               td = @reporter.pet_name
             tr
-              td 种类：
+              td 种族：
               td = @reporter.pet_species
-              td 品种：
+              td 血统：
               td = @reporter.pet_breed
             tr
               td 性别：
@@ -52,8 +56,10 @@ h2.header Lost Pet
   .six.wide.column
     .ui.piled.segment
       = render_image @reporter.pet_photo, :medium
+      = @reporter.extra_info
     p 希望好心人积极转发我发布的启示，谢谢！
-    = social_share_button_tag("我是#{@reporter.pet_name}，我，我，我迷路了，你可以帮我找到回家的路么？", image: @reporter.pet_photo.medium.url)
+    .ui.right.aligned.container
+      = social_share_button_tag("我是#{@reporter.pet_name}，我，我，我迷路了，你可以帮我找到回家的路么？", image: @reporter.pet_photo.medium.url)
 
 
 br

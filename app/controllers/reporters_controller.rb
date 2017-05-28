@@ -1,5 +1,7 @@
 class ReportersController < ApplicationController
   before_action :set_reporter, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new edit create update]
+  before_action :owner_user, only: %i[edit update]
 
   # GET /reporters
   # GET /reporters.json
@@ -23,6 +25,7 @@ class ReportersController < ApplicationController
   # POST /reporters
   def create
     @reporter = Reporter.new(reporter_params)
+    @reporter.user = current_user
     if @reporter.save
       redirect_to @reporter, notice: 'Reporter was successfully created.'
     else
@@ -49,6 +52,12 @@ class ReportersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reporter
       @reporter = Reporter.find(params[:id])
+    end
+    
+    def owner_user
+      unless current_user == @reporter.user
+        redirect_to root_path, danger: 'You are not the owner of this reporter.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
