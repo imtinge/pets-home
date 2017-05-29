@@ -5,6 +5,11 @@ ready = ->
   
   $('.ui.dropdown').dropdown()
 
+  setTimeout (->
+    $('.message .close').closest('.message').hide()
+    return
+  ), 5000
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
