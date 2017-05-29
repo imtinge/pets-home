@@ -1,18 +1,20 @@
 
-h1 喵汪的日常
 
-= link_to '新的日常', new_post_path, class: 'ui large teal button'
-.ui.hidden.
-ui.text.container
+
+
+
+.ui.container
+  h1 喵汪的日常
+  = link_to '新的日常', new_post_path, class: 'ui large right floated teal button'
+  .ui.hidden.clearing.divider
   - @posts.each do |post|
-    .ui.very.padded.raised.segment
+    .ui.raised.segment
       h1.ui.center.aligned.header
         = link_to post.title, post_path(post)
-        .ui.sub.dividing.header 
+        .ui.right.aligned.sub.header
           => post.updated_at
           =<> post.user.email
           | 发布
-      == post.content
       
 
   

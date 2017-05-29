@@ -1,13 +1,13 @@
 h1 喵汪的日常
-ui.text.container
-    .ui.very.padded.raised.segment
-      h1.ui.center.aligned.header 
-        = @post.title
-        .ui.sub.dividing.header 
-          => @post.updated_at
-          =<> @post.user.email
-          | 发布
-      == @post.content
+.ui.container
+  .ui.very.padded.raised.segment
+    h1.ui.center.aligned.header 
+      = @post.title
+      .ui.sub.dividing.header 
+        => @post.updated_at
+        =<> @post.user.email
+        | 发布
+    == @post.content
 
 - if current_user == @post.user
   = link_to '更新', edit_post_path(@post)
