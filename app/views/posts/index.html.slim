@@ -1,17 +1,17 @@
-.ui.text.container
+.ui.container
   h1 喵汪的日常
   .ui.hidden.clearing.divider
-  .ui.left.aligned.raised.segments
+  .ui.raised.segments
     .ui.secondary.clearing.segment
       = link_to '新的日常', new_post_path, class: 'ui large right floated teal button'
     - @posts.each do |post|
       .ui.segment
         .ui.two.column.grid
           .column
-            h2.ui.center.aligned.header
+            h2.ui.header
               = link_to post.title, post_path(post)
           .column
-            .ui.sub.header
+            .ui.right.aligned.sub.header
               => post.updated_at
               =<> post.user.email
               | 发布
