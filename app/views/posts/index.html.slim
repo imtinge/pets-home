@@ -1,22 +1,18 @@
-h1 Listing posts
 
-table
-  thead
-    tr
-      th Title
-      th Content
-      th
-      th
-      th
+h1 喵汪的日常
 
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.title
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+= link_to '新的日常', new_post_path, class: 'ui large teal button'
+.ui.hidden.
+ui.text.container
+  - @posts.each do |post|
+    .ui.very.padded.raised.segment
+      h1.ui.center.aligned.header
+        = link_to post.title, post_path(post)
+        .ui.sub.dividing.header 
+          => post.updated_at
+          =<> post.user.email
+          | 发布
+      == post.content
+      
 
-br
-
-= link_to 'New Post', new_post_path
+  

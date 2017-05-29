@@ -1,8 +1,17 @@
 $import-google-fonts: false
 @import semantic-ui
 @import social-share-button
+@import wangEditor.min
 @import calendar.min
 @import social-share-button
+
+body
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+main
+  flex: 1
 
 #flash_message
   position: fixed
@@ -13,5 +22,11 @@ $import-google-fonts: false
 
 .ui.huge.corner.label p
   transform: rotate(45deg)
-  margin-left: 1.5em
+  font-size: 0.8em
+  margin-left: 2em
   margin-top: 0.5em
+
+
+  
+#sitename
+  font-family: 'kuaiti'

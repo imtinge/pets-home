@@ -1,5 +1,5 @@
 class ReportersController < ApplicationController
-  before_action :set_reporter, only: [:show, :edit, :update, :destroy]
+  before_action :set_reporter, only: [:show, :edit, :update, :destroy, :has_found]
   before_action :authenticate_user!, only: %i[new edit create update]
   before_action :owner_user, only: %i[edit update]
 
@@ -46,6 +46,11 @@ class ReportersController < ApplicationController
   def destroy
     @reporter.destroy
     redirect_to reporters_url, notice: 'Reporter was successfully destroyed.'
+  end
+  
+  def has_found
+    @reporter.update_attribute(:is_found, true)
+    redirect_to @reporter
   end
 
   private

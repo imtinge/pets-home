@@ -1,29 +1,31 @@
-h1.header 爱的呼唤
-= link_to 'New Reporter', new_reporter_path, class: 'ui teal right floated button'
 
 .ui.grid.container
   .three.wide.column
-    h2.header.item 种族
-    .ui.center.aligned.animated.list
-      .item 汪星人
-      .item 喵星人
-      .item 其他星人
-    .ui.hidden.divider
-    h2.header.item 区域
-    .ui.center.aligned.animated.list
-      .item 碧江
-      .item 万山
-      .item 江口
-      .item 松桃
-      .item 玉屏
-      .item 思南
-      .item 石阡
-      .item 德江
-      .item 沿河
-      .item 印江
+    / h2.header.item 种族
+    / .ui.center.aligned.animated.list
+    /   .item 汪星人
+    /   .item 喵星人
+    /   .item 其他星人
+    / .ui.hidden.divider
+    / h2.header.item 区域
+    / .ui.center.aligned.animated.list
+    /   .item 碧江
+    /   .item 万山
+    /   .item 江口
+    /   .item 松桃
+    /   .item 玉屏
+    /   .item 思南
+    /   .item 石阡
+    /   .item 德江
+    /   .item 沿河
+    /   .item 印江
         
   .twelve.wide.column
     .ui.divided.items
+      h1.header 爱的呼唤
+      = link_to '新的呼唤', new_reporter_path, class: 'ui teal right floated button'
+      .ui.hidden.clearing.divider
+    
       - @reporters.each do |reporter|
         .item
           .ui.small.image
@@ -31,9 +33,9 @@ h1.header 爱的呼唤
               = render_image reporter.pet_photo, :thumb
           .middle.aligned.content
             - unless reporter.is_found
-              .ui.red.tag.right.floated.label Lost
+              .ui.red.tag.right.floated.label 迷路了
             - else
-              .ui.black.tag.right.floated.label Found
+              .ui.black.tag.right.floated.label 回家了
             .header
               = reporter.pet_name
             .meta

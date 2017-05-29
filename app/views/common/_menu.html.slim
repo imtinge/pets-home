@@ -1,20 +1,27 @@
-.ui.inverted.top.fixed.stackable.menu
+.ui.inverted.top.fixed.stackable.mini.menu
   .ui.container
-    = link_to '羁绊之爪', root_path, class: 'ui large header item'
-    = link_to '爱的呼唤', reporters_path, class: 'item'
-    = link_to '祈愿之塔', posts_path, class: 'item'
-    = link_to '小主的日常', '#', class: 'item'
-    = link_to '铲屎官必备', '#', class: 'item'
+    .header.item
+      = link_to '羁绊之爪', root_path
+    .item
+      = link_to '爱的呼唤', reporters_path
+    .item
+      = link_to '祈愿之塔', '#'
+    .item
+      = link_to '喵汪的日常', posts_path
+    .item
+      = link_to '铲屎官的必备', '#'
     .right.menu
       - unless user_signed_in?
         .item
           .ui.inverted.buttons
-            = button_to '登陆', new_user_session_path, class: 'ui inverted button'
+            = link_to '登陆', new_user_session_path, class: 'ui inverted button'
             .or
-            = button_to '注册', new_user_registration_path, class: 'ui inverted button'
+            = link_to '注册', new_user_registration_path, class: 'ui inverted button'
       - else
         .ui.dropdown.item
           = current_user.email
-          = semantic_icon 'dropdown'
+          i.dropdown.icon
           .menu
-            = link_to semantic_icon('sign out') + 'Sign out', destroy_user_session_path, method: :delete, class: 'item'
+            = link_to destroy_user_session_path, method: :delete, class: 'item' do
+              i.sign.out.icon
+              | 退出

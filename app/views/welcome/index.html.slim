@@ -15,26 +15,26 @@ html
         .item
           = link_to '爱的呼唤', reporters_path
         .item
-          = link_to '小主的日常', posts_path
+          = link_to '祈愿之塔', '#'
+        .item
+          = link_to '喵汪的日常', posts_path
+        .item
+          = link_to '铲屎官的必备', '#'
+        
         - unless user_signed_in?
           .item
-            .ui.two.column.grid
-              .column
-                = button_to '登陆', new_user_session_path, class: 'ui inverted button'
-              .column
-                = button_to '注册', new_user_registration_path, class: 'ui inverted button'
+            = link_to '登陆', new_user_session_path
+          .item
+            = link_to '注册', new_user_registration_path
         - else
           .item
             = link_to semantic_icon('sign out') + '退出', destroy_user_session_path, method: :delete
-      .ui.container
-        .ui.piled.segment
-          = image_tag 'https://www.tuchuang001.com/images/2017/05/27/andrew-branch-126769.md.jpg', class: 'ui medium image'
-        .ui.container
-          erb:
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=500 src="//music.163.com/outchain/player?type=2&id=448917334&auto=1&height=32"></iframe>
+      erb:
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=110 src="//music.163.com/outchain/player?type=0&id=743561071&auto=1&height=90"></iframe>
       #footer
         .ui.center.aligned.inverted.segment
-          | Copyright &copy;2017 羁绊之爪
+          | Copyright &copy;2017 
+          span#footer-sitename 羁绊之爪
           br
           small
             | Design by 
@@ -50,39 +50,35 @@ html
       #top-menu
         .ui.inverted.borderless.huge.top.fixed.menu
           .ui.container
+            a.toc.item
+              i.loading.sidebar.icon
             .header.item
               = link_to '羁绊之爪', root_path
             .item
               = link_to '爱的呼唤', reporters_path
             .item
-              = link_to '小主的日常', '#'
-            .right.menu
-              a.toc.item 
-                i.loading.sidebar.icon
+              = link_to '祈愿之塔', '#'
+            .item
+              = link_to '喵汪的日常', posts_path
+            .item
+              = link_to '铲屎官的必备', '#'
+
       .ui.vertical.center.aligned.segment#whole
 
-            
 
 
     css:
+
       #whole {
         height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;
         background-image: url(https://www.tuchuang001.com/images/2017/05/27/mitchell-orr-204792.jpg);
       }
+
       
       #top-menu .menu {
         background: transparent;
-      }
-      
-      .menu .item {
-        font-family: 'kuaiti';
-        font-size: 160%;
-      }
-      
-      .menu .header.item {
-        font-size: 210%;
       }
       
       #footer {
@@ -109,7 +105,4 @@ html
           }), function() {});
         })
       ;
-    
-    
-    
     

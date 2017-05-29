@@ -11,8 +11,8 @@ html
     main style='margin-top: 74px;'
       #flash_message
         = semantic_flash
-      .ui.container style='margin-top: 16px;'
+      .ui.container#content style='margin-top: 16px;'
         = yield
     = render "common/footer"
-    = debug params if Rails.env.development?
+    / = debug params if Rails.env.development?
     

@@ -1,8 +1,8 @@
 = form_for @reporter, html: { class: 'ui form' } do |f|
   = render 'common/error_message', object: @reporter
   .ui.very.padded.segment
-    - if current_user == @report_user and !@reporter.new_record?
-      = link_to 'Ta已经回家了?', '#', class: 'ui right floated large red button', data: { confirm: 'Are you sure?' }
+    - unless @reporter.new_record?
+      = link_to 'Ta已经回家了?', has_found_reporter_path(@reporter), method: :post, class: 'ui right floated large red button', data: { confirm: 'Are you sure?' }
     h3.header 宠物信息
     .five.fields
       .field

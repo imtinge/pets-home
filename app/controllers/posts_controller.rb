@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :has_found]
+  before_action :authenticate_user!, only: %i[new edit create update]
+  before_action :owner_user, only: %i[edit update]
+  skip_before_action :verify_authenticity_token, only: :upload
 
   # GET /posts
   # GET /posts.json
@@ -25,7 +28,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.user = current_user
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -60,8 +64,40 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def upload
+    @imgFile = params[:imgFile]
+    unless @imgFile.nil?
+      begin
+        uploader = ImageUploader.new
+        uploader.store!(@imgFile)
+        file_url = uploader.url
+        if ENV['RAILS_RELATIVE_URL_ROOT']
+          file_url = ENV['RAILS_RELATIVE_URL_ROOT'] + file_url
+        end
+        render(plain: file_url) and return
+      rescue CarrierWave::UploadError => e
+        show_error(e.message) and return
+      rescue Exception => e
+        show_error(e.to_s) and return
+      end
+    else
+      show_error("No File Selected!") and return
+    end
+  end
 
   private
+
+    def show_error(msg)
+      render plain: "error|#{msg}"
+    end
+    
+    def owner_user
+      unless current_user == @post.user
+        redirect_to root_path, danger: 'You are not the owner of this reporter.'
+      end
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])

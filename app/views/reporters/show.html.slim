@@ -1,14 +1,14 @@
-h2.header Lost Pet
+h2.header 迷失的孩子
 
 .ui.grid.container
   .ten.wide.column
     .ui.very.padded.piled.segments
       - unless @reporter.is_found
         .ui.huge.red.corner.label 
-          p Lost
+          p 迷路了
       - else
         .ui.huge.black.corner.label 
-          p Found
+          p 已回家
       .ui.segment
         h3.header 走失信息
         table.ui.very.basic.table
@@ -63,6 +63,7 @@ h2.header Lost Pet
 
 
 br
-= link_to 'Edit', edit_reporter_path(@reporter)
-'  |
-= link_to 'Back', reporters_path
+- if current_user == @reporter.user
+  = link_to '更新', edit_reporter_path(@reporter)
+  '  |
+= link_to '返回', reporters_path
