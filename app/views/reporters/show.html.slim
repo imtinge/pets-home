@@ -55,7 +55,7 @@ h2.header 迷失的孩子
       
   .six.wide.column
     .ui.piled.segment
-      = render_image @reporter.pet_photo, :medium
+      = render_image_with_zoom @reporter.pet_photo, :medium, nil
       = @reporter.extra_info
     p 希望好心人积极转发我发布的启示，谢谢！
     .ui.right.aligned.container
