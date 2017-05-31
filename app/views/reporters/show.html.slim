@@ -67,3 +67,11 @@ br
   = link_to '更新', edit_reporter_path(@reporter)
   '  |
 = link_to '返回', reporters_path
+
+
+= javascript_include_tag "https://cdn.bootcss.com/elevatezoom/3.0.8/jquery.elevatezoom.min.js"
+coffee:
+  $('.zoom-image').elevateZoom
+    zoomType: 'lens'
+    lensShape: 'round'
+    lensSize: 200

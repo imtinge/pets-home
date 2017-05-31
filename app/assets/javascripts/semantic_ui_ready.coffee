@@ -9,11 +9,6 @@ ready = ->
     $('.message .close').closest('.message').hide()
     return
   ), 5000
-  
-  $('.zoom-image').elevateZoom
-    zoomType: 'lens'
-    lensShape: 'round'
-    lensSize: 200
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
