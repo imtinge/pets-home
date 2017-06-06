@@ -6,104 +6,194 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body.template.pushable
-    
-    .ui.sidebar.left
-      .ui.inverted.vertical.menu.custom-menu style='width: 100%;'
-        .header.item
-          = link_to '羁绊之爪', root_path
-        .item
-          = link_to '爱的呼唤', reporters_path
-        .item
-          = link_to '祈愿之塔', '#'
-        .item
-          = link_to '喵汪的日常', posts_path
-        .item
-          = link_to '铲屎官的必备', '#'
-        
-        - unless user_signed_in?
-          .item
-            = link_to '登陆', new_user_session_path
-          .item
-            = link_to '注册', new_user_registration_path
-        - else
-          .item
-            = link_to semantic_icon('sign out') + '退出', destroy_user_session_path, method: :delete
-      erb:
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=110 src="//music.163.com/outchain/player?type=0&id=743561071&auto=1&height=90"></iframe>
-      #footer
-        .ui.center.aligned.inverted.segment
-          | Copyright &copy;2017 
-          span#footer-sitename 羁绊之爪
-          br
-          small
-            | Design by 
-            = image_tag 'imtinge_avatar.jpg', class: 'ui avatar image'   
-            | &
-            = image_tag 'tang_avatar.jpg', class: 'ui avatar image' 
-            
-    
-    .ui.pusher
-
+  body
+    header.ui.stackable.container#top-menu
+      / audio#audio-player src='audios/koi.mp3' autoplay="autoplay" loop='true'
+      .ui.left.floated.segment style='padding: 2em; border-radius: 50%'
+        image src='https://www.tuchuang001.com/images/2017/06/06/pet-2.png'
+      .ui.right.floated.basic.segment
+        h1.header 一手一爪，一辈子的羁绊
+        / i.loading.pause.left.floated.big.icon#player-toggle
+      /   .ui.huge.stackable.menu
+      /     = link_to '羁绊之爪', root_path, class: 'header item', style: 'font-size: 1.5em;'
+          / = link_to '爱的呼唤', reporters_path, class: 'item'
+          / = link_to '萌宠的日常', posts_path, class: 'item'
+          / = link_to '祈愿之塔', '#', class: 'item'
+          / = link_to '铲屎官的必备', '#', class: 'item'
+          / .right.menu
+          /   - unless user_signed_in?
+          /     .item
+          /       .ui.buttons
+          /         = link_to '登陆', new_user_session_path, class: 'ui button'
+          /         .or
+          /         = link_to '注册', new_user_registration_path, class: 'ui button'
+          /   - else
+          /     = current_user.email
+          /     i.dropdown.icon
+          /     .menu
+          /       = link_to destroy_user_session_path, method: :delete, class: 'item' do
+          /         i.sign.out.icon
+          /         | 退出
       
+    section.bg-img#bg-img-1
+      .ui.two.column.grid
+        .column
+          .ui.basic.segment
+            p style='color: #fff799; font-size: 3em; margin-top: 3em;' 分散从此不再成为诀别！ 
+            p style='color: #fff; font-size: 2.3em;'
+              | 让分别来的短些，让重逢来的快些
+              br
+              | 快速找回走失的Ta
+              / | 一手一爪，就是一辈子的羁绊
+          .ui.right.aligned.container style='margin-top: 3em;'
+            p style='font-size: 2em;'
+              | 如果你的Ta走丢了
+              |  or 
+              | 如果你遇见走丢的Ta
+            = link_to '带 Ta 回 家', reporters_path, class: 'ui huge black button'
 
-      #top-menu
-        .ui.inverted.borderless.huge.top.fixed.menu.custom-menu
-          .ui.container
-            a.toc.item
-              i.loading.sidebar.icon
-            .header.item
-              = link_to '羁绊之爪', root_path
-            .item
-              = link_to '爱的呼唤', reporters_path
-            .item
-              = link_to '祈愿之塔', '#'
-            .item
-              = link_to '喵汪的日常', posts_path
-            .item
-              = link_to '铲屎官的必备', '#'
-
-      .ui.vertical.center.aligned.segment#whole
-      #flash_message
-        = semantic_flash
-
-
-    css:
-
-      #whole {
-        height: 100vh;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-image: url(https://www.tuchuang001.com/images/2017/05/27/mitchell-orr-204792.jpg);
-      }
-
-      
-      #top-menu .menu {
-        background: transparent;
-      }
-      
-      #footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-      
-      #footer .segment{
-        font-size: 1.3em;
-      }
-    
-    javascript:
-      $(document)
-        .ready(function() {
-    
-          // create sidebar and attach to menu open
-          $('.ui.sidebar')
-            .sidebar('attach events', '.toc.item')
-          ;
+    section.bg-img#bg-img-2
+      .ui.grid
+        .column
+          .ui.circular.segment style='padding: 1em;'
+            .ui.circular.inverted.segment style='font-size: 1.2em; padding: 0.5em; background-color: #A7D163;'
+              | 01
+          p style='writing-mode: tb-rl; font-size: 3em; margin-top: 0.5em; color: #deffa8;'
+            | 只需三步，带Ta回家
+        .seven.wide.column  
+          .ui.basic.segment style='margin-top: 3em; color: white;'
+            .ui.massive.divided.list
+              .item style='font-size: 2em;'
+                i.edit.icon
+                .content 一键发布
+                .meta.right.floated style='font-size: 0.5em;' 填写您的萌宠走失信息
+              .item style='font-size: 2em;'
+                i.mail.forward.icon
+                .content 万人转发
+                .meta.right.floated style='font-size: 0.5em;' 微博、微信、豆瓣火速转发
+              .item style='font-size: 2em;'
+                i.marker.icon
+                .content 快速定位
+                .meta.right.floated style='font-size: 0.5em;' 根据大家的反馈发现萌宠的位置
           
-          $('.menu .item').hover((function() {
-            $(this).transition('jiggle');
-          }), function() {});
-        })
-      ;
+
+    section.bg-img#bg-img-3
+      .ui.grid
+        .column
+          .ui.circular.black.inverted.segment style='padding: 1em;'
+            .ui.circular.segment style='font-size: 1.2em; padding: 0.5em;'
+              | 02
+          p style='writing-mode: tb-rl; font-size: 3em; margin-top: 0.5em; color: #a2a2a2;'
+            | 我们的成果
+        .seven.wide.column
+          .ui.basic.center.aligned.segment style='margin-top: 2.7em;font-size: 2em;'
+            | 目前为止，我们已经帮助
+            br
+            .ui.huge.statistic
+              .value 2,204
+              .label 个小家伙回家
+
+    section.bg-img#bg-img-4
+      .ui.grid
+        .column
+          .ui.circular.segment style='padding: 1em;'
+            .ui.circular.inverted.segment style='font-size: 1.2em; padding: 0.5em; background-color: #FF6F6F;'
+              | 03
+          p style='writing-mode: tb-rl; font-size: 3em; margin-top: 0.5em; color: #ffc8b9;'
+            | 用户的评价
+        .column
+        .fourteen.wide.column
+          .ui.cards
+            .ui.raised.card
+              .image
+                image src='https://www.tuchuang001.com/images/2017/05/29/cat-mapper-max-ogden-204436.md.jpg'
+              .content
+                .header 我在这找回了小七
+                .desription
+                  | 羁绊之爪的消息传播既快又广，小七走丢的第三个小时，一个素不相识的好心人，遇到了Ta，并把Ta送了回来。
+                .extra.content
+                  .right.floated.author
+                    span 柴田
+            .ui.raised.card
+              .image
+                image src='https://www.tuchuang001.com/images/2017/05/27/jim-munchbach-209685.md.jpg'
+              .content
+                .header 巧克力在这找到了回家的路
+                .desription
+                  | 我在汽车站附近看到了挨饿的巧克力，刚把Ta的信息上传到羁绊之爪，就接到了Ta主人的电话，原来她就住在隔壁小区。
+                .extra.content
+                  .right.floated.author
+                    span 真寻
+
+    section.bg-img#bg-img-5
+      .ui.grid
+        .column
+          .ui.circular.segment style='padding: 1em;'
+            .ui.circular.inverted.segment style='font-size: 1.2em; padding: 0.5em; background-color: #63D1AA;'
+              | 04
+          p style='writing-mode: tb-rl; font-size: 3em; margin-top: 0.5em; color: #acffe2;'
+            | 关于我们
+        .fifteen.wide.column
+          .ui.basic.segment style='color: white; font-size: 3em; line-height: 150%;'
+            | 因为相信宠物与铲屎官之间羁绊
+            br
+            | 所以我们不希望一次小小的分散成为一生的遗憾
+            br
+            br
+            | 希望通过大家的努力，
+            br
+            | 减少宠物与主人的分散，
+            | 让他们更快的重逢
+      .ui.right.aligned.fluid.container
+        a href="javascript:scroll(0,0)" 
+          i.huge.arrow.circle.up.icon
     
+javascript:
+  $('#player-toggle').click(function() {
+    var player = $('#audio-player')[0];
+    var controller = $(this);
+    if(player.paused){
+      controller.removeClass('play').addClass('loading pause');
+      player.play();
+    } else {
+      controller.removeClass('loading pause').addClass('play');
+      player.pause();
+    }
+  });
+
+css:
+  #top-menu {
+    height: 10vh;
+  }
+
+  .bg-img {
+    background-attachment: fixed !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 5em;
+  }
+  
+  #bg-img-1 {
+    background-image: url("https://www.tuchuang001.com/images/2017/06/06/bg-img-1.jpg");
+    height: 90vh;
+  }
+  
+  #bg-img-2 {
+    background-image: url("https://www.tuchuang001.com/images/2017/06/06/bg-img-2.jpg");
+  }
+  
+  #bg-img-3 {
+    background-position: right bottom !important;
+    background-size: auto !important;
+    background-image: url("https://www.tuchuang001.com/images/2017/06/06/bg-img-3.jpg");
+  }
+  
+  #bg-img-4 {
+    background-image: url("https://www.tuchuang001.com/images/2017/06/06/bg-img-4.jpg");
+  }
+  
+  #bg-img-5 {
+    background-image: url("https://www.tuchuang001.com/images/2017/06/06/bg-img-5.jpg");
+  }
+      

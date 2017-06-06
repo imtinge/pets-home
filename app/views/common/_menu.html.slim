@@ -1,15 +1,11 @@
-.ui.inverted.top.fixed.stackable.mini.menu.custom-menu
+.ui.inverted.top.fixed.stackable.large.menu.custom-menu
   .ui.container
     .header.item
       = link_to '羁绊之爪', root_path
     .item
       = link_to '爱的呼唤', reporters_path
     .item
-      = link_to '祈愿之塔', '#'
-    .item
-      = link_to '喵汪的日常', posts_path
-    .item
-      = link_to '铲屎官的必备', '#'
+      = link_to '萌宠日常', posts_path
     .right.menu
       - unless user_signed_in?
         .item
