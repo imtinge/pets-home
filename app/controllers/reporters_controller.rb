@@ -6,7 +6,7 @@ class ReportersController < ApplicationController
   # GET /reporters
   # GET /reporters.json
   def index
-    @reporters = Reporter.all
+    @reporters = Reporter.all.order("created_at DESC")
   end
 
   # GET /reporters/1
