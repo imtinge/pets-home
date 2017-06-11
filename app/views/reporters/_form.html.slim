@@ -38,6 +38,12 @@
       = f.label '照片'
       = f.file_field :pet_photo
       = f.hidden_field :pet_photo_cache
+    - unless @reporter.new_record?
+      .ui.piled.segment#photo_preview
+        = render_image @reporter.pet_photo, :medium, class: 'ui centered medium image', id: 'photo_image'
+    - else
+      .ui.piled.segment#photo_preview style='display: none;'
+        img#photo_image class='ui centered medium image'
     h3.header 走失信息
     .two.fields
       .field
@@ -83,6 +89,8 @@
   .field
     = f.submit 'Submit', class: 'ui teal button'
 
+
+  
 coffee:
   $('#lost-date').calendar
     type: 'date'
@@ -95,3 +103,21 @@ coffee:
       month = if month < 10 then '0' + month else month
       day = if day < 10 then '0' + day else day
       year + '-' + month + '-' + day
+
+javascript:
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function (e) {
+        $('#photo_image').attr('src', e.target.result).fadeIn('slow');
+        $('#photo_preview').show();
+      }
+      
+    reader.readAsDataURL(input.files[0]);
+    }
+  }
+  
+  $('#reporter_pet_photo').change(function(){
+    readURL(this);
+  });

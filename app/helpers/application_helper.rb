@@ -1,17 +1,17 @@
 module ApplicationHelper
-  def render_image(image, image_type, image_class='ui image')
-    if image.present?
-      image_tag image.url(image_type), class: image_class
-    else
-      image_tag 'no-image.png', class: image_class
+  def render_image(image, size, options = {})
+    options = options.symbolize_keys
+    unless options.key?(:class)
+      options[:class] = 'ui image'
     end
-  end
-  
-  def render_image_with_zoom(image, image_type, large_image_type, image_class='ui image zoom-image')
     if image.present?
-      image_tag image.url(image_type), 'data-zoom-image': image.url(large_image_type), class: image_class
+      if options.key?(:zoom_size)
+        options['data-zoom-image'] = image.url(options[:zoom_size])
+        options[:class] += ' zoom-image'
+      end 
+      image_tag image.url(size), options
     else
-      image_tag 'no-image.png', class: image_class
+      image_tag 'no-image.png', options
     end
   end
 end

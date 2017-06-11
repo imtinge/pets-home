@@ -55,7 +55,7 @@ h2.header 迷失的孩子
       
   .six.wide.column
     .ui.piled.segment
-      = render_image_with_zoom @reporter.pet_photo, :medium, nil
+      = render_image @reporter.pet_photo, :medium, zoom_size: nil
       = @reporter.extra_info
     p 希望好心人积极转发我发布的启示，谢谢！
     .ui.right.aligned.container
@@ -69,7 +69,7 @@ br
 = link_to '返回', reporters_path
 
 
-= javascript_include_tag "https://cdn.bootcss.com/elevatezoom/3.0.8/jquery.elevatezoom.min.js"
+= javascript_include_tag "//cdn.bootcss.com/elevatezoom/3.0.8/jquery.elevatezoom.min.js"
 coffee:
   $('.zoom-image').elevateZoom
     zoomType: 'lens'
