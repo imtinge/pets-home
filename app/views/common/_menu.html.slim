@@ -1,11 +1,8 @@
-.ui.inverted.top.fixed.stackable.large.menu.custom-menu
+.ui.massive.stackable.inverted.top.fixed.menu
   .ui.container
-    .header.item
-      = link_to '羁绊之爪', root_path
-    .item
-      = link_to '爱的呼唤', reporters_path
-    .item
-      = link_to '萌宠日常', posts_path
+    = link_to '羁绊之爪', root_path, class: 'header item'
+    = link_to '爱的呼唤', reporters_path, class: 'item'
+    = link_to '萌宠日常', posts_path, class: 'item'
     .right.menu
       - unless user_signed_in?
         .item

@@ -12,7 +12,7 @@
               = link_to post.title, post_path(post)
           .column
             .ui.right.aligned.sub.header
-              => post.updated_at
+              = local_time post.updated_at
               =<> post.user.email
               | 发布
       

@@ -5,7 +5,39 @@ html
       | 羁绊之爪
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag '//cdn.bootcss.com/simple-text-rotator/1.0.0/simpletextrotator.min.css'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    css:
+      .bg-img {
+        background-attachment: fixed !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 5em;
+      }
+
+      #bg-img-1 {
+        background-image: url("/images/bg-img-1.jpg");
+        min-height: 93vh;
+      }
+
+      #bg-img-2 {
+        background-image: url("/images/bg-img-2.jpg");
+      }
+
+      #bg-img-3 {
+        background-position: right bottom !important;
+        background-size: auto !important;
+        background-image: url("/images/bg-img-3.jpg");
+      }
+
+      #bg-img-4 {
+        background-image: url("/images/bg-img-4.jpg");
+      }
+
+      #bg-img-5 {
+        background-image: url("/images/bg-img-5.jpg");
+      }
   body
     .ui.fluid.container
       header.ui.two.column.stackable.grid.container style='margin-bottom: -5em;'
@@ -22,9 +54,7 @@ html
               .ui.container style='padding-top: 24vh;'
                 h1.header style='color: #fff799; font-size: 3em;' 分散从此不再成为诀别！
                 h2.header style='color: white; line-height: 150%;'
-                  | 让分别来的短一些，让重逢来的快一些
-                  br
-                  | 快速找回走失的Ta
+                  span.rotate 一手一爪，一辈子的羁绊, 让分别来的短一些, 让重逢来的快一些, 快速找回走失的Ta
                 .ui.right.aligned.container
                   = link_to '帮Ta回家', reporters_path, class: 'ui massive black button'
 
@@ -136,34 +166,11 @@ html
             = image_tag 'imtinge_avatar.jpg', class: 'ui avatar image'
             | &
             = image_tag 'tang_avatar.jpg', class: 'ui avatar image'
-css:
-  .bg-img {
-    background-attachment: fixed !important;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding: 5em;
-  }
 
-  #bg-img-1 {
-    background-image: url("/images/bg-img-1.jpg");
-    min-height: 93vh;
-  }
-
-  #bg-img-2 {
-    background-image: url("/images/bg-img-2.jpg");
-  }
-
-  #bg-img-3 {
-    background-position: right bottom !important;
-    background-size: auto !important;
-    background-image: url("/images/bg-img-3.jpg");
-  }
-
-  #bg-img-4 {
-    background-image: url("/images/bg-img-4.jpg");
-  }
-
-  #bg-img-5 {
-    background-image: url("/images/bg-img-5.jpg");
-  }
+= javascript_include_tag '//cdn.bootcss.com/simple-text-rotator/1.0.0/jquery.simple-text-rotator.min.js'
+javascript:
+  $(".rotate").textrotator({
+    animation: "dissolve", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
+    separator: ",", // If you don't want commas to be the separator, you can define a new separator (|, &, * etc.) by yourself using this field.
+    speed: 2000 // How many milliseconds until the next word show.
+  });

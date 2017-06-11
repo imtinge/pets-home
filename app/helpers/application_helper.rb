@@ -14,4 +14,8 @@ module ApplicationHelper
       image_tag 'no-image.png', options
     end
   end
+  
+  def local_time(input_time)
+    input_time.strftime("%Y/%m/%d %H:%M")
+  end
 end

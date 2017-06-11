@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module PetsHome
   class Application < Rails::Application
-    
+    config.i18n.default_locale = "zh-CN"
+    config.time_zone = "Chongqing"
     config.generators do |g|
       g.template_engine :slim
     end
