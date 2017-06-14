@@ -12,8 +12,8 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'pets-home-again'
-set :domain, 'apps@112.74.127.33'
-set :deploy_to, '/export/app/pets-home-again'
+set :domain, 'apps@106.14.202.187'
+set :deploy_to, '/var/www/pets-home-again'
 set :repository, 'git://github.com/imtinge/pets-home.git'
 set :branch, 'master'
 
@@ -59,7 +59,7 @@ task :deploy do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    command %{#{fetch(:rails)} db:seed}
+    # command %{#{fetch(:rails)} db:seed}
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
